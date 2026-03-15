@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"   # new line for production
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'morelife_project' / 'media'
