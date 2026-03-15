@@ -1,0 +1,144 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morelife Innovation</title>
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- TOP CONTACT BAR -->
+
+<div class="top-bar">
+<div class="top-info">
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+14 Edun Ajelanwa St, Idimu, Lagos 102213, Lagos, Nigeria
+</span>
+
+<span>
+<i class="fa-solid fa-envelope"></i>
+morelifeinnovation@gmail.com
+</span>
+
+</div>
+</div>
+
+<header>
+
+<div class="logo">Morelife</div>
+
+<nav id="nav-menu">
+<a href="#">Home</a>
+<a href="#products">Shop</a>
+<a href="#">About</a>
+</nav>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fa fa-bars"></i>
+</div>
+
+<div class="cart-icon">
+<i class="fa fa-shopping-cart"></i>
+<span id="cart-count">0</span>
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<h1>Live Healthy With Premium Products</h1>
+<p>Kangen Water • Wellness Products • Organic Health</p>
+
+<button onclick="scrollToProducts()">Shop Now</button>
+
+</section>
+
+<!-- CART SECTION BEGINS-->
+
+<section id="products" class="products">
+
+<h2>Our Products</h2>
+
+<div class="product-grid">
+
+{% for product in products %}
+
+<div class="product">
+
+<img src="{{ product.image.url }}" alt="">
+
+<h3>{{ product.name }}</h3>
+
+
+<p>₦{{ product.price|intcomma }}</p>
+
+<div class="qty-box">
+<button onclick="changeQty(this,-1)">-</button>
+<input type="text" value="1" class="qty-input">
+<button onclick="changeQty(this,1)">+</button>
+</div>
+
+<button class="add-cart"
+onclick="addProductToCart(this,'{{ product.name }}',{{ product.price }})">
+Add to Cart
+</button>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+<!-- IT ENDS HERE -->
+
+<section class="cart-section">
+
+<h2>Your Cart</h2>
+
+<ul id="cart-items"></ul>
+
+<h3>Total: ₦<span id="total">0</span></h3>
+
+<button class="checkout">Checkout</button>
+
+</section>
+
+
+<footer>
+
+<div class="footer-content">
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+14 Edun Ajelanwa St, Idimu, Lagos 102213, Lagos, Nigeria
+</p>
+
+<p>
+<i class="fa-solid fa-envelope"></i>
+morelifeinnovation@gmail.com
+</p>
+
+<p>© 2026 Morelife Innovation</p>
+
+</div>
+
+</footer>
+
+<script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
