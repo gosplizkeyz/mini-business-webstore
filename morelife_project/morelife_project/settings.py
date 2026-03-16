@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'cloudinary',
+    'cloudinary_storage',
     
     'shop',
 ]
@@ -128,3 +131,13 @@ STATIC_ROOT = BASE_DIR / "staticfiles"   # new line for production
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+import cloudinary
+
+cloudinary.config(
+    cloud_name = "duvhv7geu",
+    api_key = "546455312261477",
+    api_secret = "Bbjr9n15i9ebBAOv5QSQTl4Ev7c"
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
